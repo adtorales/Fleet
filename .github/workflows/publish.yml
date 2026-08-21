@@ -103,7 +103,7 @@ jobs:
         env:
           GITHUB_PACKAGES_USERNAME: ${{ github.actor }}
           GITHUB_PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./edc-demo/gradlew -p edc-demo :launchers:edc-demo:shadowJar
+        run: gradle -p edc-demo :launchers:edc-demo:shadowJar
       - name: Set up Docker Buildx
         if: github.event_name != 'pull_request'
         uses: docker/setup-buildx-action@v3
