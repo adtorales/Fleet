@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{ISO8601} %-5level %logger - %msg%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <!-- EDC's Monitor, including the policy reconciliation summary. -->
+        <Logger name="org.eclipse.edc.monitor.logger" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Root level="WARN">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -44,4 +44,11 @@ public interface ResourceReconciler {
      */
     ServiceResult<Void> reconcile(TypedRegistry registry, ReconciliationContext context);
 
+    /**
+     * Returns the report from the last reconciliation run, or null if no run has been performed yet.
+     */
+    default ReconciliationReport lastReport() {
+        return null;
+    }
+
 }

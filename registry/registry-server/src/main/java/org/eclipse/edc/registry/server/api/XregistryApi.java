@@ -14,8 +14,17 @@
 
 package org.eclipse.edc.registry.server.api;
 
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.core.Response;
+
 /**
  * Xregistry server API.
  */
 public interface XregistryApi {
+    @GET
+    Response getRegistry();
+
+    @POST
+    Response reloadRegistry();
 }

@@ -57,4 +57,13 @@ public interface RegistryStore {
      */
     ServiceResult<Void> deleteResource(String id);
 
+    /**
+     * Reloads the registry contents from its backing source.
+     * <p>
+     * In-memory or static implementations may treat this as a no-op.
+     */
+    default ServiceResult<Void> reload() {
+        return ServiceResult.success();
+    }
+
 }

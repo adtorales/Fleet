@@ -27,6 +27,10 @@ import static org.eclipse.edc.registry.xregistry.model.definition.ValueType.STRI
  */
 public class RegistrySchemaDefinitions {
 
+    public static final String FORMAT = "format";
+    public static final String SCHEMA = "schema";
+    public static final String SCHEMA_BASE64 = "schemabase64";
+
     public static GroupDefinition createSchemaGroupDefinition() {
         return GroupDefinition.Builder.newInstance()
                 .singular("schemagroup")
@@ -38,9 +42,9 @@ public class RegistrySchemaDefinitions {
     public static ResourceDefinition createSchemaResourceDefinition() {
         var versionDefinition = VersionDefinition.Builder.newInstance()
                 .resourceName("schema")
-                .attribute(createDefinition("format", STRING))
-                .attribute(createDefinition("schema", STRING))
-                .attribute(createDefinition("schemabase64", STRING))
+                .attribute(createDefinition(FORMAT, STRING))
+                .attribute(createDefinition(SCHEMA, STRING))
+                .attribute(createDefinition(SCHEMA_BASE64, STRING))
                 .build();
         return ResourceDefinition.Builder.newInstance()
                 .singular("schema")

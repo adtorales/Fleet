@@ -16,6 +16,7 @@ package org.eclipse.edc.registry.server.api;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
@@ -23,6 +24,7 @@ import org.eclipse.edc.registry.server.spi.store.RegistryStore;
 
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import static jakarta.ws.rs.core.Response.ok;
+import static jakarta.ws.rs.core.Response.serverError;
 import static java.lang.Integer.MAX_VALUE;
 
 /**
@@ -41,6 +43,16 @@ public class XregistryApiController implements XregistryApi {
     @GET
     public Response getRegistry() {
         return ok(registryStore.fetch(0, MAX_VALUE)).build();
+    }
+
+    @POST
+    @Path("/reload")
+    public Response reloadRegistry() {
+        var result = registryStore.reload();
+        if (result.failed()) {
+            return serverError().entity(result.getFailureDetail()).build();
+        }
+        return ok().build();
     }
 
 }

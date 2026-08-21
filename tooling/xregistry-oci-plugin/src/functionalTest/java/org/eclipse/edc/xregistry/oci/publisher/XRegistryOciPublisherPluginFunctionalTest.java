@@ -100,7 +100,7 @@ public class XRegistryOciPublisherPluginFunctionalTest {
 
         // create build.gradle.kts with plugin applied
         writeString(buildFile.toPath(), format("""
-                import org.eclipse.edc.fleet.xregistry.oci.publisher.XRegistryOciPublisherExtension
+                import org.eclipse.edc.xregistry.oci.publisher.XRegistryOciPublisherExtension
                 import java.time.Instant
                 
                 plugins {

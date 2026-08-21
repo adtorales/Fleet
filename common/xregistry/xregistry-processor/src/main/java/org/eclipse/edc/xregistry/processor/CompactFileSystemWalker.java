@@ -18,8 +18,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.eclipse.edc.xregistry.processor.FileParser.parseFilename;
 import static java.nio.file.Files.exists;
+import static org.eclipse.edc.xregistry.processor.FileParser.parseFilename;
 
 /**
  * Walks a file-system-based xRegistry that is in compact format.

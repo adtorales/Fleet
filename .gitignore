@@ -40,6 +40,7 @@ build
 *.hprof
 
 .env
+registry/launcher/config/registry-local-secrets.properties
 
 # Terraform https://github.com/github/gitignore/blob/main/Terraform.gitignore
 

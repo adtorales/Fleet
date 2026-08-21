@@ -4,7 +4,8 @@ format.version = "1.1"
 [versions]
 assertj = "3.27.3"
 awaitility = "4.2.2"
-edc = "0.12.0"
+edc = "0.15.1"
+edc-build = "1.1.6"
 jackson = "2.18.2"
 jakarta-annotation = "2.1.1"
 jersey = "3.1.10"
@@ -20,12 +21,14 @@ slf4j = "2.0.16"
 jetbrainsAnnotation = "26.0.2-1"
 oras-java-sdk = "0.2.15"
 junit-jupiter = "5.9.2"
+networknt-json-schema-validator = "2.0.0"
 
 
 [libraries]
 
 edc-junit = { module = "org.eclipse.edc:junit", version.ref = "edc" }
 edc-runtime-metamodel = { module = "org.eclipse.edc:runtime-metamodel", version.ref = "edc" }
+edc-runtime-core = { module = "org.eclipse.edc:runtime-core", version.ref = "edc" }
 edc-boot = { module = "org.eclipse.edc:boot", version.ref = "edc" }
 edc-config-fs = { module = "org.eclipse.edc:configuration-filesystem", version.ref = "edc" }
 edc-spi-core = { module = "org.eclipse.edc:core-spi", version.ref = "edc" }
@@ -41,6 +44,10 @@ edc-spi-validator = { module = "org.eclipse.edc:validator-spi", version.ref = "e
 edc-spi-web = { module = "org.eclipse.edc:web-spi", version.ref = "edc" }
 edc-spi-token = { module = "org.eclipse.edc:token-spi", version.ref = "edc" }
 edc-spi-policy = { module = "org.eclipse.edc:policy-spi", version.ref = "edc" }
+edc-spi-controlplane = { module = "org.eclipse.edc:control-plane-spi", version.ref = "edc" }
+edc-spi-participant = { module = "org.eclipse.edc:participant-spi", version.ref = "edc" }
+edc-controlplane-transform = { module = "org.eclipse.edc:control-plane-transform", version.ref = "edc" }
+edc-controlplane-aggregate = { module = "org.eclipse.edc:control-plane-aggregate-services", version.ref = "edc" }
 edc-spi-dcp = { module = "org.eclipse.edc:identity-trust-spi", version.ref = "edc" }
 edc-spi-vc = { module = "org.eclipse.edc:verifiable-credentials-spi", version.ref = "edc" }
 edc-core-connector = { module = "org.eclipse.edc:connector-core", version.ref = "edc" }
@@ -108,14 +115,16 @@ jakarta-annotation = { module = "jakarta.annotation:jakarta.annotation-api", ver
 jetbrains-annotations = { module = "org.jetbrains:annotations", version.ref = "jetbrainsAnnotation" }
 jersey-common = { module = "org.glassfish.jersey.core:jersey-common", version.ref = "jersey" }
 slf4j-noop = {module = "org.slf4j:slf4j-nop", version.ref="slf4j"}
+json-schema-validator = { module = "com.networknt:json-schema-validator", version.ref = "networknt-json-schema-validator" }
 oras-java-sdk = { module = "land.oras:oras-java-sdk", version.ref = "oras-java-sdk" }
 
 
 [bundles]
 testing = ["junit-jupiter", "assertj-core", "junit-platform-launcher"]
-base-runtime = ["edc-boot", "edc-core-connector", "edc-http", "edc-observability", "slf4j-noop"]
+base-runtime = ["edc-boot", "edc-runtime-core", "edc-core-connector", "edc-http", "edc-observability", "slf4j-noop"]
 testcontainers = ["testcontainers", "testcontainers-junit-jupiter"]
 
 [plugins]
-shadow = { id = "com.gradleup.shadow", version = "8.3.6" }
+shadow = { id = "com.gradleup.shadow", version = "9.6.0" }
+edc-build = { id = "org.eclipse.edc.edc-build", version.ref = "edc-build" }
 

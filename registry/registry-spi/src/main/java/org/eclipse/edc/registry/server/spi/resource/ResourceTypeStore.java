@@ -22,6 +22,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
+import static org.eclipse.edc.spi.result.ServiceResult.success;
+
 /**
  * Manages groups for a resource type.
  */
@@ -41,6 +43,15 @@ public interface ResourceTypeStore<T extends TypedResource<?>> {
      */
     @NotNull
     Collection<TypedGroup> fetchGroups(int offset, int maxResults);
+
+    /**
+     * Reloads the resource type contents from its backing source.
+     * <p>
+     * Static or manually-managed implementations may treat this as a no-op.
+     */
+    default ServiceResult<Void> reload() {
+        return success();
+    }
 
     ServiceResult<Void> createResource(T resource);
 

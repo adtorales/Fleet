@@ -14,8 +14,6 @@
 
 package org.eclipse.edc.xregistry.processor;
 
-import org.eclipse.edc.xregistry.processor.Artifact;
-import org.eclipse.edc.xregistry.processor.FileParser;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;

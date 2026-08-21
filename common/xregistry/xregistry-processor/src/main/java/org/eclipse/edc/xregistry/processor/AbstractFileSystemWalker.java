@@ -65,6 +65,7 @@ public abstract class AbstractFileSystemWalker {
             case POLICY -> visitor.onPolicy(artifact, createSupplier(filePath));
             case SCHEMA -> visitor.onSchema(artifact, createSupplier(filePath));
             case RULE -> visitor.onRule(artifact, createSupplier(filePath));
+            default -> throw new IllegalArgumentException("Unsupported artifact type: " + type);
         }
     }
 

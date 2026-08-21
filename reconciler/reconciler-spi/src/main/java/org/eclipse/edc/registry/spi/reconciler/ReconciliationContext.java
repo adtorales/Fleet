@@ -24,11 +24,11 @@ public class ReconciliationContext {
     private Map<Class<?>, Object> cache = new HashMap<>();
 
     @SuppressWarnings("unchecked")
-    <T> T getData(Class<T> type) {
+    public <T> T getData(Class<T> type) {
         return (T) cache.get(type);
     }
 
-    <T> void setData(Class<T> type, T data) {
+    public <T> void setData(Class<T> type, T data) {
         cache.put(type, data);
     }
 }

@@ -1,6 +1,7 @@
 plugins {
     base
     `java-gradle-plugin`
+    `maven-publish`
 }
 
 repositories {
@@ -9,18 +10,17 @@ repositories {
 
 // Configure the functional test source set
 val functionalTestSourceSet = sourceSets.create("functionalTest")
-configurations.getByName("functionalTestImplementation").extendsFrom(configurations.implementation.get())
-configurations.getByName("functionalTestRuntimeOnly").extendsFrom(configurations.runtimeOnly.get())
-
-
-val functionalTestImplementation: Configuration by configurations.getting {
+val functionalTestImplementation = configurations.getByName("functionalTestImplementation").apply {
     extendsFrom(configurations.implementation.get())
 }
+configurations.getByName("functionalTestRuntimeOnly").extendsFrom(configurations.runtimeOnly.get())
+
 
 dependencies {
     implementation(gradleApi())
     implementation(libs.oras.java.sdk)
 
+    testImplementation(libs.bundles.testing)
     testImplementation(platform(libs.testcontainers.bom))
     testImplementation(libs.testcontainers)
     testImplementation(libs.testcontainers.junit.jupiter)
@@ -73,11 +73,3 @@ tasks.check {
 
 
 project.defaultTasks("buildXRegistryOciPublish")
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            from(components["java"])
-        }
-    }
-}

@@ -1,0 +1,9 @@
+build/
+dist/
+out/
+tmp/
+*.log
+.DS_Store
+.gradle/
+local-secrets.properties
+launchers/edc-demo/config/*.local.properties

@@ -20,9 +20,15 @@ plugins {
 
 dependencies {
     runtimeOnly(libs.bundles.base.runtime)
+    runtimeOnly(libs.edc.config.fs)
+    runtimeOnly(libs.edc.lib.json)
+    runtimeOnly(libs.edc.lib.jsonld)
+    runtimeOnly(libs.edc.jsonld)
+    runtimeOnly(libs.edc.api.version)
     runtimeOnly(project(":registry:registry-server"))
     runtimeOnly(project(":registry:registry-policy"))
-    runtimeOnly(project(":registry:registry-policy-memory"))
+    runtimeOnly(project(":registry:registry-oci"))
+    runtimeOnly(project(":registry:registry-schema"))
 }
 
 application {
@@ -30,6 +36,7 @@ application {
 }
 
 tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
     exclude("**/pom.properties", "**/pom.xml")
     mergeServiceFiles()
     archiveFileName.set("registry-server.jar")

@@ -20,8 +20,11 @@ plugins {
 dependencies {
     implementation(project(":registry:registry-spi"))
     implementation(project(":common:xregistry:xregistry-lib"))
+    implementation(project(":common:xregistry:xregistry-processor"))
     implementation(project(":common:xregistry:xregistry-policy"))
-    implementation(project(":registry:registry-spi"))
+    implementation(libs.jackson.databind)
+    implementation(libs.oras.java.sdk)
     implementation(libs.edc.lib.util)
+    implementation("org.apache.commons:commons-compress:1.28.0")
     testImplementation(libs.edc.junit)
 }

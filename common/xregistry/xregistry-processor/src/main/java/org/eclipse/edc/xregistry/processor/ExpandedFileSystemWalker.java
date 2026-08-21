@@ -11,6 +11,7 @@
  *       Metaform Systems, Inc. - initial API and implementation
  *
  */
+
 package org.eclipse.edc.xregistry.processor;
 
 import java.io.IOException;

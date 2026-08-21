@@ -14,8 +14,6 @@
 
 package org.eclipse.edc.xregistry.processor;
 
-import org.eclipse.edc.xregistry.processor.DeploymentIndexVisitor;
-import org.eclipse.edc.xregistry.processor.ExpandedFileSystemWalker;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;
